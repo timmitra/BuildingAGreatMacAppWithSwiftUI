@@ -24,9 +24,43 @@ struct GardenDetail: View {
     @State var sortOrder: [KeyPathComparator<Plant>] = [
         .init(\.variety, order: SortOrder.forward)
     ]
+  
+  var table: some View {
+    Table(plants, selection: $selection, sortOrder: $sortOrder) {
+      TableColumn("Variety", value: \.variety)
+      TableColumn("Days to Maturity", value: \.daysToMaturity) { plant in
+        Text(plant.daysToMaturity .formatted())
+      }
+      TableColumn("Date Planted", value: \.datePlanted) { plant in
+          Text(plant.datePlanted.formatted(date: .abbreviated, time: .omitted))
+      }
+
+      TableColumn("Harvest Date", value: \.harvestDate) { plant in
+          Text(plant.harvestDate.formatted(date: .abbreviated, time: .omitted))
+      }
+
+      TableColumn("Last Watered", value: \.lastWateredOn) { plant in
+          Text(plant.lastWateredOn.formatted(date: .abbreviated, time: .omitted))
+      }
+
+      TableColumn("Favorite", value: \.favorite, comparator: BoolComparator()) { plant in
+          Toggle("Favorite", isOn: gardenBinding[plant.id].favorite)
+              .labelsHidden()
+      }
+      .width(50)
+
+    }
+  }
     
     var body: some View {
-        Text("Plant Table")
+        table
+        .searchable(text: $searchText)
+        .toolbar{
+          DisplayModePicker(mode: $mode)
+          Button(action: addPlant) {
+            Label("Add Plant", systemImage: "plus")
+          }
+        }
             .navigationTitle(garden.name)
             .navigationSubtitle("\(garden.displayYear)")
     }
