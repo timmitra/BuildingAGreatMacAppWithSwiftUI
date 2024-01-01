@@ -54,6 +54,8 @@ struct GardenDetail: View {
     
     var body: some View {
         table
+        .focusedSceneValue(\.garden, gardenBinding)
+        .focusedSceneValue(\.selection, $selection)
         .searchable(text: $searchText)
         .toolbar{
           DisplayModePicker(mode: $mode)
