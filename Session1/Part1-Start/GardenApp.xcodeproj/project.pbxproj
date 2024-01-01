@@ -12,6 +12,7 @@
 		1F937129264C807C00D4F7E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F937128264C807C00D4F7E3 /* Assets.xcassets */; };
 		1F93712C264C807C00D4F7E3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F93712B264C807C00D4F7E3 /* Preview Assets.xcassets */; };
 		1F937140264C858B00D4F7E3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F937142264C858B00D4F7E3 /* Localizable.strings */; };
+		2A66CF1C2B435E1600C43A71 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A66CF1B2B435E1600C43A71 /* SettingsView.swift */; };
 		532124D2264F675600513404 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 532124D0264F675600513404 /* InfoPlist.strings */; };
 		53A4D8FE264DC8F700447BCF /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 53A4D8FC264DC8F600447BCF /* Credits.rtf */; };
 		A5BE4E50264C86EA005CE624 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BE4E4F264C86EA005CE624 /* Plant.swift */; };
@@ -37,6 +38,7 @@
 		1F937128264C807C00D4F7E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F93712B264C807C00D4F7E3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1F937141264C858B00D4F7E3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2A66CF1B2B435E1600C43A71 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		4A001A32437FF244FC3C4411 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		532124D1264F675600513404 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		53A4D8FD264DC8F600447BCF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				A5BE4E61264C96D6005CE624 /* DisplayModePicker.swift */,
 				A5BE4E65264C99C2005CE624 /* GardenHistoryOutline.swift */,
 				A5BE4E67264C9B54005CE624 /* SidebarLabel.swift */,
+				2A66CF1B2B435E1600C43A71 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				A5BE4E56264C8E04005CE624 /* FocusedValues+Garden.swift in Sources */,
 				1F937127264C807B00D4F7E3 /* ContentView.swift in Sources */,
 				A5BE4E5E264C95B0005CE624 /* ExpansionState.swift in Sources */,
+				2A66CF1C2B435E1600C43A71 /* SettingsView.swift in Sources */,
 				A5BE4E5C264C90B7005CE624 /* WaterPlantsButton.swift in Sources */,
 				A5BE4E66264C99C2005CE624 /* GardenHistoryOutline.swift in Sources */,
 				A5BE4E64264C9753005CE624 /* GardenDetail.swift in Sources */,
