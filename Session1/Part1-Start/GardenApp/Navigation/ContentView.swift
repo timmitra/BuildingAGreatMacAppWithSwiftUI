@@ -8,9 +8,12 @@ The main content view for this sample.
 import SwiftUI
 
 struct ContentView: View {
+  @SceneStorage("selection") var selection: Garden.ID?
     var body: some View {
-        Text("Hello World!")
-            .padding()
+      NavigationView {
+        Sidebar(selection: $selection)
+        GardenDetail(gardenId: $selection)
+      }
     }
 }
 
@@ -19,4 +22,26 @@ struct ContentViewPreviews: PreviewProvider {
         ContentView()
             .environmentObject(Store())
     }
+}
+
+struct Sidebar: View {
+  @EnvironmentObject var store: Store
+  @SceneStorage("expansionState") var expansionState = ExpansionState()
+  @Binding var selection: Garden.ID?
+  var body: some View {
+    List(selection: $selection) {
+      DisclosureGroup(isExpanded: $expansionState[store.currentYear]) {
+        ForEach(store.gardens(in: store.currentYear)) { garden in
+          Label(garden.name, systemImage: "leaf")
+            .badge(garden.numberOfPlantsNeedingWater)
+        }
+      } label: {
+        Label("Current", systemImage: "chart.bar.doc.horizontal")
+      }
+      Section("History"){
+        GardenHistoryOutline(range: store.previousYears, expansionState: $expansionState)
+      }
+    }
+    .frame(minWidth: 250)
+  }
 }
