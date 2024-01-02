@@ -10,7 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var store: Store
     @SceneStorage("selection") private var selectedGardenID: Garden.ID?
-
+    @AppStorage("defaultGarden") var defaultGardenID: Garden.ID?
+  
     var body: some View {
         NavigationView {
             Sidebar(selection: selection)
@@ -19,7 +20,7 @@ struct ContentView: View {
     }
 
     private var selection: Binding<Garden.ID?> {
-        $selectedGardenID
+      Binding(get: { selectedGardenID ?? defaultGardenID }, set: { selectedGardenID = $0 })
     }
     
     private var selectedGarden: Binding<Garden> {

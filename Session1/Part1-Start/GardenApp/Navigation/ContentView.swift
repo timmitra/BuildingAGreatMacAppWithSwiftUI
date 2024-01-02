@@ -8,13 +8,23 @@ The main content view for this sample.
 import SwiftUI
 
 struct ContentView: View {
-  @SceneStorage("selection") var selection: Garden.ID?
+  @EnvironmentObject var store: Store
+  @SceneStorage("selection") var selectedGardenID: Garden.ID?
+  @AppStorage("defaultGarden") var defaultGardenID: Garden.ID?
+
     var body: some View {
       NavigationView {
-        Sidebar(selection: $selection)
-        GardenDetail(gardenId: $selection)
+        Sidebar(selection: selection)
+        GardenDetail(garden: selectedGarden)
       }
     }
+  
+  private var selection: Binding<Garden.ID?> {
+    Binding(get: { selectedGardenID ?? defaultGardenID }, set: { selectedGardenID = $0 })
+  }
+  private var selectedGarden: Binding<Garden.ID?> {
+    $store[selection:wrappedValue]
+  }
 }
 
 struct ContentViewPreviews: PreviewProvider {
