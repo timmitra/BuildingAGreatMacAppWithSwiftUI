@@ -9,8 +9,17 @@ import SwiftUI
 
 struct ImportExportCommands: Commands {
     var store: Store
+  @State private var isShowingExport = false
 
     var body: some Commands {
-        EmptyCommands()
+      CommandGroup(replacing: .importExport) {
+        Section {
+          Button("Export…") {
+            isShowingExport = true
+          }
+        }
+        .fileExporter(isPresented: $isShowingExport, document: store, contentType: Store.readableContentTypes.first!) { result in
+        }
+      }
     }
 }

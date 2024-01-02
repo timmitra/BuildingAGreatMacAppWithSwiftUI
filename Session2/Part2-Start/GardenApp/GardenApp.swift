@@ -20,6 +20,7 @@ struct GardenApp: App {
         .commands {
             SidebarCommands()
             PlantCommands()
+            ImportExportCommands(store: store)
         }
       Settings {
         SettingsView()
