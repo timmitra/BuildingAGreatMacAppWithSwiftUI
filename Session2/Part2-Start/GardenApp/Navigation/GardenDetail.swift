@@ -83,6 +83,13 @@ struct GardenDetail: View {
         }
         .navigationTitle(garden.name)
         .navigationSubtitle("\(garden.displayYear)")
+        .importsItemProviders(selection.isEmpty ? [] : Plant.importImageTypes) { providers in
+          Plant.importImageFromProviders(providers) { url in
+            for plantID in selection {
+              garden[plantID].imageURL = url
+            }
+          }
+        }
     }
 }
 
