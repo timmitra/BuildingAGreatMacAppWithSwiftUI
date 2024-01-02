@@ -26,8 +26,20 @@ struct SettingsView: View {
   
   private struct GeneralSettings: View  {
     @EnvironmentObject var store: Store
+    @AppStorage("defaultGarden") var selection: Garden.ID?
     var body: some View {
-      Color.clear
+      Form {
+        Picker("Default Garden", selection: $selection) {
+          Text("None")
+            .tag(Garden.ID?.none)
+          ForEach(store.gardens) { garden in
+            Text("\(garden.name), \(garden.displayYear)")
+              .tag(Garden.ID?.some(garden.id))
+          }
+        }
+        .fixedSize()
+      }
+      .padding()
     }
   }
   

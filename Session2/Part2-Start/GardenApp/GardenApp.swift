@@ -21,5 +21,9 @@ struct GardenApp: App {
             SidebarCommands()
             PlantCommands()
         }
+      Settings {
+        SettingsView()
+          .environmentObject(store)
+      }
     }
 }
