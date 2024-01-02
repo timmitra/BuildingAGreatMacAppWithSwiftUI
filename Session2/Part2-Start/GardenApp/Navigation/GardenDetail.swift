@@ -26,7 +26,7 @@ struct GardenDetail: View {
     ]
 
     var table: some View {
-        Table(plants, selection: $selection, sortOrder: $sortOrder) {
+        Table(selection: $selection, sortOrder: $sortOrder) {
             TableColumn("Variety", value: \.variety)
 
             TableColumn("Days to Maturity", value: \.daysToMaturity) { plant in
@@ -50,6 +50,16 @@ struct GardenDetail: View {
                     .labelsHidden()
             }
             .width(50)
+        } rows: {
+          ForEach(plants) { plant in
+          TableRow(plant)
+              .itemProvider { plant.itemProvider }
+          }
+          .onInsert(of: [Plant.draggableType]) { index, providers in
+            Plant.fromItemProviders(providers) { plants in
+              garden.plants.insert(contentsOf: plants, at: index)
+            }
+          }
         }
     }
 
